@@ -1,0 +1,18 @@
+f = open ("/Users/mihail_konnovlist.ru/Desktop/Lab AISD/numbers.txt", "r")
+cnt = 0
+divs = []
+divs1 = []
+for i in f:
+    divs += i.strip().split()
+for j in divs:
+    if len(j) == len(set(list(j))):
+        divs1.append(j)
+        cnt += 1
+if cnt == 0:
+    print ('В данном файле чисел, состоящих из разнных цифр нет')
+if cnt == 1:
+    print ('Такое число:', cnt)
+    print ('Данное число:', *divs1)
+if cnt > 1:
+    print ('Таких чисел:', cnt)
+    print ('Данные числа:', *divs1)
