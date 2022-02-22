@@ -15,7 +15,7 @@ if cnt == 1:
     print ('Данное число:', *divs1)
 if cnt > 1 and (max(divs1) == min(divs1)):
         print ('Существует', cnt, 'одинаковых чисел, удовлетворяющих условию задачи')
-        print ('Такое число:', *(set(divs1)))
+        print ('Данное число:', *(set(divs1)))
 if cnt > 1 and (max(divs1) != min(divs1)):
         print ('Таких чисел:', cnt)
         print ('Данные числа:', *divs1)
