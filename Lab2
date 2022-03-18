@@ -1,21 +1,22 @@
-f = open ("/Users/mihail_konnovlist.ru/Desktop/Lab AISD/numbers.txt", "r")
-cnt = 0
-divs = []
-divs1 = []
-for i in f:
+import time
+print (time.ctime())
+start = time.time()
+f = open ("/Users/mihail_konnovlist.ru/Desktop/Lab AISD/numbers.txt", "r") # Открываем и читаем файл
+cnt = 0 # Заводим счётчик чисел
+divs = [] # Также Объявляем массив, в котором будут храниться числа, разделённые пробелом
+for i in f: # Циклом проходим по файлу и перебрасываем числа из файла в массив, при этом каждое число это отдельная строка  
     divs += i.strip().split()
-for j in divs:
-    if len(j) == len(set(list(j))):
-        divs1.append(j)
-        cnt += 1
-if cnt == 0:
-    print ('В данном файле чисел, состоящих из разных цифр нет')
-if cnt == 1:
-    print ('Такое число одно')
-    print ('Данное число:', *divs1)
-if cnt > 1 and (max(divs1) == min(divs1)):
-        print ('Существует', cnt, 'одинаковых чисел, удовлетворяющих условию задачи')
-        print ('Данное число:', *(set(divs1)))
-if cnt > 1 and (max(divs1) != min(divs1)):
-        print ('Таких чисел:', cnt)
-        print ('Данные числа:', *divs1)
+if len(divs) > 0: # Проверяем заполнен ли файл
+    print ("Таике числа")
+    for j in divs: # Теперь ищем числа удовлетворяющие условию задачи
+        if j.isnumeric() == True: # Проверяем, чтобы в файле числа состояли только из цифр
+            if len(j) == len(set(list(j))):
+                cnt += 1
+                print (j)
+    if cnt == 0:
+        print ("отсутсвуют")
+    else:
+        print ("Таких чисел:", cnt)
+else:
+    print("Данный файл пуст")
+print ("Время работы алгоритма =", time.time()-start, "секунд")
