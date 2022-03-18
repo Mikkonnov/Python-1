@@ -14,7 +14,7 @@ if len(divs) > 0: # Проверяем заполнен ли файл
                 cnt += 1
                 print (j)
     if cnt == 0:
-        print ("отсутсвуют")
+        print ("отсутствуют")
     else:
         print ("Таких чисел:", cnt)
 else:
