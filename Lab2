@@ -1,22 +1,31 @@
-import time
-print (time.ctime())
-start = time.time()
-f = open ("/Users/mihail_konnovlist.ru/Desktop/Lab AISD/numbers.txt", "r") # Открываем и читаем файл
-cnt = 0 # Заводим счётчик чисел
-divs = [] # Также Объявляем массив, в котором будут храниться числа, разделённые пробелом
-for i in f: # Циклом проходим по файлу и перебрасываем числа из файла в массив, при этом каждое число это отдельная строка  
-    divs += i.strip().split()
-if len(divs) > 0: # Проверяем заполнен ли файл
-    print ("Такие числа")
-    for j in divs: # Теперь ищем числа удовлетворяющие условию задачи
-        if j.isnumeric() == True: # Проверяем, чтобы в файле числа состояли только из цифр
-            if len(j) == len(set(list(j))):
+cnt = 0   # заводим счётчик чисел                                                  
+buffer = 1   # буфер чтения равен 1                                                       
+divs = [] # заводим массив в котором будут храниться нужные числа
+
+with open("/Users/mihail_konnovlist.ru/Desktop/Lab AISD/numbers 2.txt", "r") as file:  # открываем файл                            
+    part = file.read(buffer)  # читаем файл по кускам по 1 символу                                 
+
+    if not part: # если кусок отсутствует
+         print("Файл пустой")
+
+    while part:    # пока кусок не пуст                                            
+
+        while (part < '0' or part > '9') and part: # пропускаем кусок если это не цифры
+            part = file.read(buffer)                           
+
+        while (part >= '0' and part <= '9') and part: 
+            if part.isnumeric() == True :                      
+                divs.append(part)
+            part = file.read(buffer)
+        if divs != []:
+            if len(divs) == len(set(list(divs))): 
                 cnt += 1
-                print (j)
-    if cnt == 0:
-        print ("отсутствуют")
-    else:
-        print ("Таких чисел:", cnt)
+                if cnt == 1:
+                    print ("Такие числа:")
+                print (*divs)
+        divs = []
+        
+if cnt == 0:
+    print ("Таких чисел нет")
 else:
-    print("Данный файл пуст")
-print ("Время работы алгоритма =", time.time()-start, "секунд")
+    print ("Данных чисел:", cnt)
