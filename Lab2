@@ -1,6 +1,6 @@
-cnt = 0   # заводим счётчик чисел                                                  
-buffer = 1   # буфер чтения равен 1                                                       
+cnt = 0   # заводим счётчик чисел                                                                                                 
 divs = [] # заводим массив в котором будут храниться нужные числа
+buffer = 1   # буфер чтения равен 1
 
 with open("/Users/mihail_konnovlist.ru/Desktop/Lab AISD/numbers 2.txt", "r") as file:  # открываем файл                            
     part = file.read(buffer)  # читаем файл по кускам по 1 символу                                 
