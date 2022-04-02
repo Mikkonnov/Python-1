@@ -1,11 +1,6 @@
-import time
-
 cnt = 0   # заводим счётчик чисел                                                  
 buffer = 1   # буфер чтения равен 1                                                       
 divs = [] # заводим массив в котором будут храниться нужные числа
-
-print (time.ctime())
-start = time.time()
 
 with open("/Users/mihail_konnovlist.ru/Desktop/Lab AISD/numbers 2.txt", "r") as file:  # открываем файл                            
     part = file.read(buffer)  # читаем файл по кускам по 1 символу                                 
@@ -35,5 +30,3 @@ if cnt == 0:
     print ("Таких чисел нет")
 else:
     print ("Данных чисел:", cnt)
-    
-print ("Время работы алгоритма =", time.time()-start, "секунд")
