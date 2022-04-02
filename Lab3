@@ -24,13 +24,11 @@ with open("/Users/mihail_konnovlist.ru/Desktop/Lab AISD/numbers 2.txt", "r") as 
             divs == []
         if divs != []:
             if len(divs) == len(set(list(divs))):
-                if divs[0] == '.' or divs[-1] == '.':
-                    divs = []
-                else:
-                    cnt += 1
-                    if cnt == 1:
-                        print ("Такие числа:")
-                    print (''.join(divs))
+                cnt += 1
+                if cnt == 1:
+                    print ("Такие числа:")
+                        
+                print (''.join(divs))
         divs = []
         
 if cnt == 0:
