@@ -98,22 +98,22 @@ time_prev = time_next
 time_next = time.time()
 print_matrix(A,"A",0)
 
-for i in range(N):            # K*A
-    for j in range(N):
-        A[i][j] = K*A[i][j]    
-time_prev = time_next
-time_next = time.time()
-print_matrix(A,"K*A",time_next-time_prev)
-    
-for i in range(N):            # K*A*F
-    for j in range(N):
+for i in range (N):         # A * F
+    for j in range (N):
         s = 0
-        for m in range(N):
-            s=s+ A[i][m] * F[m][j]
-        AF[i][j] = s
+        for m in range (N):
+            s = s + A[i][m] * F[m][j]
+        AF[i][j] = s    
 time_prev = time_next
 time_next = time.time()
-print_matrix(AF,"K*A*F",time_next-time_prev)
+print_matrix(A,"A * F",time_next-time_prev)
+
+for i in range (N):          # K * (A * F)
+    for j in range (N):
+        AF[i][j] = AF[i][j] * K
+time_prev = time_next
+time_next = time.time()
+print_matrix(AF,"K * (A * F)",time_next-time_prev)
     
 for i in range(N):            # FT
     for j in range(i,N,1):
@@ -122,19 +122,19 @@ time_prev = time_next
 time_next = time.time()
 print_matrix(FT,"F^T",time_next-time_prev)
                 
-for i in range(N):            # K*FT
+for i in range(N):            # K * FT
     for j in range(N):
         FT[i][j] = K*FT[i][j]
 time_prev = time_next
 time_next = time.time()
-print_matrix(FT,"K*F^T",time_next-time_prev)
+print_matrix(FT,"K * F^T",time_next-time_prev)
     
-for i in range(N):            # (K*A)*F+K*FT
+for i in range(N):            # K * (A * F) + K * FT
     for j in range(N):
         AF[i][j] = AF[i][j]+FT[i][j]    
 time_prev = time_next
 time_next = time.time()
-print_matrix(AF,"(K*A)*F+K*F^T",time_next-time_prev)
+print_matrix(AF,"(K * A) * F + K * F^T",time_next-time_prev)
     
 finish = time.time()
 result = finish - start
