@@ -129,7 +129,7 @@ plt.ylabel("Element value")
 sns.lineplot(data = F)
 plt.show()
 
-sns.heatmap(data = F, annot=True)             # 3 пример
+sns.heatmap(data = F, annot = True)             # 3 пример
 plt.xlabel("Matrix column number")
 plt.ylabel("Matrix row number")
 plt.show()
